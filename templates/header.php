@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
-          <img src="<?php echo get_template_directory_uri()."/assets/img/logo.png"; ?>" alt="<?php echo get_bloginfo( 'name' ); ?>">      
+          <!-- <img src="<?php echo get_template_directory_uri()."/assets/img/logo.png"; ?>" alt="<?php echo get_bloginfo('name'); ?>">       -->
       </a>
     </div>
 

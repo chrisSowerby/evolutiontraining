@@ -23,6 +23,30 @@ module.exports = function(grunt) {
   ];
 
   grunt.initConfig({
+      ftpush: {
+        build: {
+          auth: {
+            host: '88.208.248.91',
+            port: 21,
+            authKey: 'key1'
+          },
+          src: './',
+          dest: 'httpdocs/wordpress/wp-content/themes/roots',
+          exclusions: [
+           '**/DS_Store/**',
+           'C:/xampp3/htdocs/sites/evolutiontraininguk/wordpress/wp-content/themes/roots/.ftppass',
+           '**/node_modules/**'
+           ],
+          simple:true // stops bugs with ftpush 3rd party library.
+        }
+      },
+      shell: {
+          reload: {
+              command: 'start reload-chrome.ahk'
+          }
+      },
+
+
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -127,12 +151,17 @@ module.exports = function(grunt) {
       }
     },
     watch: {
+ /*     ftpush: {
+          tasks: ['ftpush:build']
+      },*/
       less: {
         files: [
-          'assets/less/*.less',
-          'assets/less/**/*.less'
+          //'assets/less/*.less',
+          //'assets/less/**/*.less',
+          '**/*',
+          '!**/node_modules/**'
         ],
-        tasks: ['less:dev', 'autoprefixer:dev']
+        tasks: ['less:dev', 'autoprefixer:dev', 'ftpush', 'shell:reload']
       },
       js: {
         files: [
@@ -159,13 +188,13 @@ module.exports = function(grunt) {
 
   // Register tasks
   grunt.registerTask('default', [
-    'dev'
+    'dev','ftpush'
   ]);
   grunt.registerTask('dev', [
     'jshint',
     'less:dev',
     'autoprefixer:dev',
-    'concat'
+    'concat','ftpush'
   ]);
   grunt.registerTask('build', [
     'jshint',
@@ -175,4 +204,7 @@ module.exports = function(grunt) {
     'modernizr',
     'version'
   ]);
+
+
+  grunt.loadNpmTasks('grunt-ftpush');
 };
