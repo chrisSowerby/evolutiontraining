@@ -41,7 +41,7 @@
      } 
 
 // Display the pagination
-echo $service->pagination();
+
 
 ?>
 
