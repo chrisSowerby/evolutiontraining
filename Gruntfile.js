@@ -159,7 +159,8 @@ module.exports = function(grunt) {
           //'assets/less/*.less',
           //'assets/less/**/*.less',
           '**/*',
-          '!**/node_modules/**'
+          '!**/node_modules/**',
+          '!**/*.min*/**'
         ],
         tasks: ['less:dev', 'autoprefixer:dev', 'ftpush', 'shell:reload']
       },
@@ -168,7 +169,7 @@ module.exports = function(grunt) {
           jsFileList,
           '<%= jshint.all %>'
         ],
-        tasks: ['jshint', 'concat']
+        tasks: [/*'jshint', */'concat']
       },
       livereload: {
         // Browser live reloading
@@ -191,13 +192,13 @@ module.exports = function(grunt) {
     'dev','ftpush'
   ]);
   grunt.registerTask('dev', [
-    'jshint',
+    //'jshint',
     'less:dev',
     'autoprefixer:dev',
     'concat','ftpush'
   ]);
   grunt.registerTask('build', [
-    'jshint',
+    //'jshint',
     'less:build',
     'autoprefixer:build',
     'uglify',

@@ -1,0 +1,250 @@
+<?php
+$cat_id = "5";
+$_productCollection = Mage::getResourceModel('catalog/product_collection')
+->addAttributeToSelect(array('name', 'price', 'small_image', 'short_description', 'slider_url', 'embed_iframe'), 'inner') //the_slider_url
+->addCategoryFilter(Mage::getModel('catalog/category')->load($cat_id));
+
+if(!$_productCollection->count()):
+ echo $this->__('There are no products matching the selection.');
+else: ?>
+
+
+	<div id="imageSliderParent"> <!-- This is the parent div. Keep it here -->
+	<!--[if lt IE 9 ]> <div class="imageSliderDoomsDay" id="imageSlider"> <![endif]-->
+	<!--[if (gt IE 8)|!(IE)]><!--> <div id="imageSlider"> <!--<![endif]-->
+	    <ul>        
+	       
+
+			<li>
+	            <ul> 
+	                <a href="http://ecoadwaterlessurinals.co.uk">                
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="" title=""></a> -->
+	                    
+	                <img class="img-responsive" src="http://www.ecoadwaterlessurinals.co.uk/magento/media/catalog/product/cache/1/small_image/1200x450/9df78eab33525d08d6e5fb8d27136e95/s/l/slide2_1.png" alt="" title="">                    
+	                    
+	                    <div class="inside-slide">
+	                         
+	                        <h2>slide name extra 1</h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price">35.00 </div> -->
+	                        <p>Short Description extra 1
+	                            
+	                        </p>                        
+	                    </div>                
+
+	                    
+	                    </a>
+	                 
+
+	            </ul>
+	        </li>
+	        			<li>
+	            <ul> 
+	                <a href="http://ecoadwaterlessurinals.co.uk">                
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="" title=""></a> -->
+	                    
+	                <img class="img-responsive" src="http://www.ecoadwaterlessurinals.co.uk/magento/media/catalog/product/cache/1/small_image/1200x450/9df78eab33525d08d6e5fb8d27136e95/s/l/slide2_1.png" alt="" title="">                    
+	                    
+	                    <div class="inside-slide">
+	                         
+	                        <h2>slide name extra 2</h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price">35.00 </div> -->
+	                        <p>Short Description extra 2
+	                            
+	                        </p>                        
+	                    </div>                
+
+	                    
+	                    </a>
+	                 
+
+	            </ul>
+	        </li>
+			<li>
+	            <ul> 
+	                <a href="http://ecoadwaterlessurinals.co.uk">                
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="" title=""></a> -->
+	                    
+	                <img class="img-responsive" src="http://www.ecoadwaterlessurinals.co.uk/magento/media/catalog/product/cache/1/small_image/1200x450/9df78eab33525d08d6e5fb8d27136e95/s/l/slide2_1.png" alt="" title="">                    
+	                    
+	                    <div class="inside-slide">
+	                         
+	                        <h2>slide name extra 1</h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price">35.00 </div> -->
+	                        <p>Short Description extra 1
+	                            
+	                        </p>                        
+	                    </div>                
+
+	                    
+	                    </a>
+	                 
+
+	            </ul>
+	        </li>
+	        			<li>
+	            <ul> 
+	                <a href="http://ecoadwaterlessurinals.co.uk">                
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="" title=""></a> -->
+	                    
+	                <img class="img-responsive" src="http://www.ecoadwaterlessurinals.co.uk/magento/media/catalog/product/cache/1/small_image/1200x450/9df78eab33525d08d6e5fb8d27136e95/s/l/slide2_1.png" alt="" title="">                    
+	                    
+	                    <div class="inside-slide">
+	                         
+	                        <h2>slide name extra 2</h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price">35.00 </div> -->
+	                        <p>Short Description extra 2
+	                            
+	                        </p>                        
+	                    </div>                
+
+	                    
+	                    </a>
+	                 
+
+	            </ul>
+	        </li>
+			<li>
+	            <ul> 
+	                <a href="http://ecoadwaterlessurinals.co.uk">                
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="" title=""></a> -->
+	                    
+	                <img class="img-responsive" src="http://www.ecoadwaterlessurinals.co.uk/magento/media/catalog/product/cache/1/small_image/1200x450/9df78eab33525d08d6e5fb8d27136e95/s/l/slide2_1.png" alt="" title="">                    
+	                    
+	                    <div class="inside-slide">
+	                         
+	                        <h2>slide name extra 1</h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price">35.00 </div> -->
+	                        <p>Short Description extra 1
+	                            
+	                        </p>                        
+	                    </div>                
+
+	                    
+	                    </a>
+	                 
+
+	            </ul>
+	        </li>
+	        			<li>
+	            <ul> 
+	                <a href="http://ecoadwaterlessurinals.co.uk">                
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="" title=""></a> -->
+	                    
+	                <img class="img-responsive" src="http://www.ecoadwaterlessurinals.co.uk/magento/media/catalog/product/cache/1/small_image/1200x450/9df78eab33525d08d6e5fb8d27136e95/s/l/slide2_1.png" alt="" title="">                    
+	                    
+	                    <div class="inside-slide">
+	                         
+	                        <h2>slide name extra 2</h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price">35.00 </div> -->
+	                        <p>Short Description extra 2
+	                            
+	                        </p>                        
+	                    </div>                
+
+	                    
+	                    </a>
+	                 
+
+	            </ul>
+	        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	        <?php $i=0; foreach ($_productCollection as $_product): ?>
+	        <li>
+	            <ul> 
+	                <?php if ($_product->getEmbedIframe() == "no" && $_product->getSliderUrl() != "no") { 
+	               
+	                    $url = $_product->getSliderUrl();
+	                    if  ( $ret = parse_url($url) ) {
+
+	                          if ( !isset($ret["scheme"]) )
+	                           {
+	                           $url = "http://{$url}";
+	                           }
+	                    }
+	                ?>
+	                     <a href="<?php echo $url; ?>">
+	                <?php } ?>
+
+	                    
+	                <!-- Link to the actual product -->
+	                <!-- <a href="<?php // echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>"></a> -->
+	                    
+	                <img class="img-responsive<?php if ($_product->getEmbedIframe() != "no") { ?> has-video<?php } ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(1200, 450); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />                    
+	                    
+	                    <div class="inside-slide<?php if ($_product->getEmbedIframe() != "no") { ?> inside-slide-video<?php } ?>">
+	                        <?php if ($_product->getEmbedIframe() != "no") { ?>    
+	                            <?php echo $_product->getEmbedIframe(); ?>
+	                        <?php } ?> 
+	                        <h2><?php echo $_product->getName(); ?></h2>
+	                        <!-- get product price -->
+	                        <!-- <div class="price"><?php echo number_format($_product->getFinalPrice(),2);?> </div> -->
+	                        <p><?php echo $_product->getShortDescription(); ?>
+
+	                            <?php if ($_product->getEmbedIframe() != "no" && $_product->getSliderUrl() != "no") { 
+	                           
+	                                $url = $_product->getSliderUrl();
+	                                if  ( $ret = parse_url($url) ) {
+
+	                                      if ( !isset($ret["scheme"]) )
+	                                       {
+	                                       $url = "http://{$url}";
+	                                       }
+	                                }
+	                            ?>
+	                                 <a href="<?php echo $url; ?>">Find out more!</a>
+	                            <?php } ?>
+
+	                        </p>                        
+	                    </div>                
+
+	                <?php if ($_product->getEmbedIframe() == "no" && $_product->getSliderUrl() != "no") { ?>    
+	                    </a>
+	                <?php } ?> 
+
+	            </ul>
+	        </li>
+	        <?php endforeach ?>
+	        
+	    </ul>
+	    <div id="slideBtns"></div>
+	</div>
+</div>
+
+<?php endif; ?>
