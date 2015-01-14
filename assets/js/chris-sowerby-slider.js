@@ -28,13 +28,12 @@ var nextIcon = "&#8680;";
 var usePagination = true;
 var setSlideHeights = false;
 var slideEffect = "fade"; // fade or slide
-var maxSlideWidth = "1140"; // This is used to calculate the inner slides scale vale when viewed on mobile devices.
-var maxSlideHeight = "450"; // This is used to calculate the inner slides scale vale when viewed on mobile devices.
+var maxSlideWidth = 1140; // This is used to calculate the inner slides scale vale when viewed on mobile devices.
+var maxSlideHeight = 450; // This is used to calculate the inner slides scale vale when viewed on mobile devices.
 var refreshInterval;
 var refreshIntervalHeights;
 var timerRefreshInterval;
 var childNumbers = 0; // this must be 0
-
 
 function setRefreshInterval() {
   refreshInterval = setInterval( moveRight, autoSlideChange);  
@@ -98,38 +97,20 @@ function imageSliderResizeMyWindow() {
   var slideHeight = theScale * maxSlideHeight; 
   $slider.parent().height(slideHeight).css({"width":"inherit","max-width":"100%"}); //,"height":"auto"
 
-  console.log("theScale: "+theScale)
-  console.log("slideHeight: "+slideHeight)
-  console.log("slideWidth: "+slideWidth)
+  //console.log("theScale: "+theScale)
+  //console.log("slideHeight: "+slideHeight)
+  //console.log("slideWidth: "+slideWidth)
 
   // this is how we can target parts of the inner slide to set css on them at diffrent widths a bit like media queries.
   if ($(window).width() < 600) {
+    $slider.parent().hide();
     // expand the iframe out to the slides height and width.
-    $slider.find('iframe').css({width: maxSlideWidth, height: maxSlideHeight});
-    $slider.css("transform", "scale(1, 1)").parent().height(maxSlideHeight); // 
+    // $slider.find('iframe').css({width: maxSlideWidth, height: maxSlideHeight});
+    // $slider.css("transform", "scale(1, 1)").parent().height(maxSlideHeight); 
   } else {
-
+    $slider.parent().show();
     $("#imageSlider:not(.imageSliderDoomsDay)").css("transform", "scale("+theScale+", "+theScale+")")
-    $(".imageSliderDoomsDay").css({"zoom":theScale});  
-    $slider.find("> ul > li > ul img").width(maxSlideWidth); // images smaller than the maxSlideWidth will break the responsive bits so makeing sure here 
-    
-    $slider.find("> ul > li > ul img").each(function (){
-      // stretch images that are too small in height and then only shrink the hight if they fall within 275px of the max height
-      if ($(this).height() < slideHeight) {        
-        $(this).height(slideHeight);
-      }
-
-      
-      
-
-      else if ($(this).height() < slideHeight + 275) {        
-        console.log("inside else if 123");
-        $(this).height(slideHeight);
-      }
-console.log($(this).height());
-console.log("slideHeight here"+slideHeight);
-    });
-
+    $(".imageSliderDoomsDay").css({"zoom":theScale});
   }
   // fix IE8 transform origin
   $slider.css({"margin-left":"0px", "margin-top":"0px"}); 
@@ -326,6 +307,30 @@ if (setSlideHeights == true){
   } 
 }
 $slider.fadeIn(800);
+
+// images smaller than the maxSlideWidth will break the responsive bits so makeing sure here     
+$slider.find("> ul > li > ul img").each(function (){
+
+  // get this original image dimensions: width and height 
+  var newImg = new Image(); 
+  newImg.src = $(this).attr('src');
+  var originalImageHeight = newImg.height;
+  var originalImageWidth = newImg.width;
+
+  // force image width to be the slides max width
+  $(this).width(maxSlideWidth); 
+  var imageThreshold = 405;
+  var maxThreshold = maxSlideHeight + imageThreshold;
+  // stretch images that are too small in height and then only shrink the height if they fall within 275px of the max height
+  if (originalImageHeight <= maxThreshold && originalImageHeight != maxSlideHeight) {
+    console.log("image malformed! original width: "+originalImageWidth+", original height: "+originalImageHeight+" and is now malformed to this new width: "+maxSlideWidth+" and this new height: "+maxSlideHeight+" click the link below to see the original image: "+newImg.src+"\n");
+    $(this).height(maxSlideHeight);
+  }
+  if (originalImageHeight > maxThreshold) {
+      console.log("Original image is not able to be shrunk or stretched as it is not within the allowed threshold. Please make your image is within "+imageThreshold+"px of the allowed height ("+maxSlideHeight+"px).\n Your image height is "+originalImageHeight+". Image src: "+newImg.src);
+  }
+});
+
 $slider.css({"transform-origin": "0px 0px 0px","-webkit-transform-origin":"0px 0px 0px"});
 if (usePauseOnHover == true) {
     $slider.on("mouseenter", function() {

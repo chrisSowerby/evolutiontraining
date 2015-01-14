@@ -34,9 +34,11 @@ unset($file, $filepath);
 
 /*x_crop_position accepts 'left' 'center', or 'right'
 y_crop_position accepts 'top', 'center', or 'bottom'*/
-add_image_size( 'image-slider', 1140, 450, array( 'left', 'top' ) ); // Hard crop left top
-add_theme_support( 'image-slider' );
-
+add_image_size( 'image-slider-shrink', 1140 ); // fit to this width with unlimited height
+add_image_size( 'image-slider-crop', 1140, 450, array( 'center', 'center' ) ); // Hard crop
+add_theme_support( 'image-slider-shrink' );
+add_theme_support( 'image-slider-crop' );
+add_theme_support( 'post-thumbnails' ); 
 
 //register css and js
 //see this for help: http://code.tutsplus.com/articles/how-to-include-javascript-and-css-in-your-wordpress-themes-and-plugins--wp-24321

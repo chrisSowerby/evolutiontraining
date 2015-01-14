@@ -11,7 +11,7 @@ wp_enqueue_script( 'chris-sowerby-slider' );
         'orderby' =>'date DESC' // newest first
         // you can change the pods publish date in the dashboard to change order 
      );
-     $service = pods( 'homepage_slider', $params );
+     $service = pods( 'homepage_content', $params );
 
      if ( 0 < $service->total() ) { // if more than 1 found
 
@@ -30,16 +30,38 @@ wp_enqueue_script( 'chris-sowerby-slider' );
     $page_url = $service->field( 'url_to_a_sub_page' );
     $plain_text_description = $service->field( 'slide_description' );
     $services_photo = $service->field( 'slide_photo' );
+    $image_size_type = $service->field( 'crop_image_if_too_big_to_fit' ); 
+    if ($image_size_type == 1){
+      //crop image if too big to fit = yes
+      $image_size_type = "image-slider-crop";
+    }
+    else if ($image_size_type == 0){
+      //crop image if too big to fit = no
+      $image_size_type = "image-slider-shrink";
+    }
+
     // options: original, thumbnail 150px, medium 300px, large 1024px
-    $services_photo_url    = pods_image_url ( $services_photo, $size = 'image-slider', $default = 0, $force = true ); 
+    //$services_photo_url    = pods_image_url ( $services_photo, $size = $image_size_type, $default = 0, $force = true );
+
+    $thumbnail = pods_image( 
+        $services_photo,
+        $image_size_type,
+        0,
+        array(
+            'alt' => trim(strip_tags($title))            
+        ),
+        true
+    );
+
 ?>     
 
     <li>
-        <ul>               
-            <img class="img-responsive" src="<?php echo $services_photo_url; ?>" alt="">               
+        <ul>
+            <?php echo $thumbnail; ?>             
+           <!--  <img class="img-responsive" src="<?php echo $services_photo_url; ?>" alt=""> -->               
                 <div class="inside-slide">                     
                     <h2>slide name</h2>               
-                    <p>Short Description<a href="<?php echo esc_url($page_url); ?>"> . Find out more.</a></p>           
+                    <p>Short Description. <a href="<?php echo esc_url($page_url); ?>">Find out more.</a></p>           
                 </div>
         </ul>
     </li>
@@ -88,7 +110,7 @@ wp_enqueue_script( 'chris-sowerby-slider' );
 )*/ 
 
      $params = array(
-        'limit'   => 4, // use -1 for all 
+        'limit'   => 6, // use -1 for all 
         'orderby' =>'date DESC' // newest first
         // you can change the pods publish date in the dashboard to change order 
      );
@@ -121,8 +143,13 @@ wp_enqueue_script( 'chris-sowerby-slider' );
 
 // Display the pagination
 echo $service->pagination();
-
 ?>
 
-
+<?php if (have_posts()) {
+  while (have_posts()) {
+    the_post(); // infinite loop if removed
+    the_content(); // text from wizzywig
+    the_title(''); // page name
+  }
+} ?>
 
