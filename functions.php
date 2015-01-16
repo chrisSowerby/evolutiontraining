@@ -61,3 +61,4 @@ function wptuts_scripts_important()
     
 }
 add_action('wp_enqueue_scripts', 'wptuts_scripts_important', 999); // last param is position in page
+

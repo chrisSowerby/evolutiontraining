@@ -23,8 +23,8 @@ var useHoverFade = true;
 var hoverFadeDuration = 600;
 var hoverFadeWait = 1500;
 var usePrevAndNextButtons = true;
-var prevIcon = "&#8678;";
-var nextIcon = "&#8680;";
+var prevIcon = "&lt;"; // &lt; = less than, &#8678; = arrow left; 
+var nextIcon = "&gt;"; // &gt; = greater than, &#8680; = arrow right;
 var usePagination = true;
 var setSlideHeights = false;
 var slideEffect = "fade"; // fade or slide

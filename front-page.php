@@ -4,14 +4,27 @@ wp_enqueue_script( 'jquery-mobile' );
 wp_enqueue_script( 'chris-sowerby-slider' );
 ?>
 
+<!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+<div class="sliderGradient gradient">
+<div class="container"> 
+<div class="row">
+
+<div class="col-md-12">
+<div class="themeSlider">
 <?php
 //IMAGE SLIDER
      $params = array(
         'limit'   => 4, // use -1 for all 
-        'orderby' =>'date DESC' // newest first
+        'orderby' =>'date ASC' // ASC = oldest first, DESC = newest first, 
         // you can change the pods publish date in the dashboard to change order 
      );
-     $service = pods( 'homepage_content', $params );
+     $service = pods( 'homepage_slider', $params );
 
      if ( 0 < $service->total() ) { // if more than 1 found
 
@@ -20,7 +33,6 @@ wp_enqueue_script( 'chris-sowerby-slider' );
   <!--[if lt IE 9 ]> <div class="imageSliderDoomsDay" id="imageSlider"> <![endif]-->
   <!--[if (gt IE 8)|!(IE)]><!--> <div id="imageSlider"> <!--<![endif]-->
       <ul>
-
 
 
 
@@ -60,26 +72,15 @@ wp_enqueue_script( 'chris-sowerby-slider' );
             <?php echo $thumbnail; ?>             
            <!--  <img class="img-responsive" src="<?php echo $services_photo_url; ?>" alt=""> -->               
                 <div class="inside-slide">                     
-                    <h2>slide name</h2>               
-                    <p>Short Description. <a href="<?php echo esc_url($page_url); ?>">Find out more.</a></p>           
+                    <h3><?php echo $title;?></h3>               
+                    <p><?php echo $plain_text_description;?>. <a href="<?php echo esc_url($page_url); ?>">Find out more.</a></p>           
                 </div>
         </ul>
     </li>
 
 
-
-
-
-
-
-
-
-
-
-
 <?php
   } // loop
-
 
 
 
@@ -91,16 +92,46 @@ wp_enqueue_script( 'chris-sowerby-slider' );
 </div>
 <?php
      } // if any slides
+?>
+<?php // themeSlider ?>
+</div>
+
+<?php // col-md-12 ?>
+</div>
+
+<?php // row ?>
+</div> 
+
+<?php // container ?>
+</div>
+
+<?php // gradient ?>
+</div>
+
+<div class="redBarHere">
+  <div class="container"> 
+    <div class="row">
+        
+        <div class="col-md-12">
+
+            <p>Our Courses</p>
+
+        <?php // col-md-12 ?>
+        </div>
+
+    <?php // row ?>
+    </div> 
+
+  <?php // container ?>
+  </div>
+</div>
 
 
+<div class="container"> 
+<div class="row">
 
 
-
-
-
-
-
-
+<?php
 //SERVICES BOXES
 // for help see https://gist.github.com/Shelob9/7832561
 /*$params = array(
@@ -111,7 +142,7 @@ wp_enqueue_script( 'chris-sowerby-slider' );
 
      $params = array(
         'limit'   => 6, // use -1 for all 
-        'orderby' =>'date DESC' // newest first
+        'orderby' =>'date ASC' // ASC = oldest first, DESC = newest first,
         // you can change the pods publish date in the dashboard to change order 
      );
      $service = pods( 'training_service', $params );
@@ -121,11 +152,13 @@ wp_enqueue_script( 'chris-sowerby-slider' );
 
     $name = $service->field( 'name_of_training' );
     $services_photo = $service->field( 'image_for_this_type_of_training' );
-    $page_url = $service->field( 'permalink' );
+    //$page_url = $service->field( 'permalink' );
+    $page_url = $service->field( 'url_to_a_sub_page' );
     $plain_text_description = $service->field( 'training_description' );
+    
 
-?>
-     
+
+?>    
 
     <h2>
       <a href="<?php echo esc_url($page_url); ?>">
@@ -135,8 +168,9 @@ wp_enqueue_script( 'chris-sowerby-slider' );
     <?php // options: original, thumbnail 150px, medium 300px, large 1024px
     $services_photo_url    = pods_image_url ( $services_photo, $size = 'medium', $default = 0, $force = false ); ?>   
     <img src="<?php echo $services_photo_url; ?>">
+    <p><?php echo $plain_text_description;?></p>
 
-    <br>
+    
 <?php
           } 
      } 
@@ -153,3 +187,7 @@ echo $service->pagination();
   }
 } ?>
 
+<?php // row ?>
+</div> 
+<?php // container ?>
+</div>

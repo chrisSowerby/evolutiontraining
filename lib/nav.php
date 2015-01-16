@@ -41,9 +41,17 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
   function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
     $element->is_dropdown = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
-    if ($element->is_dropdown) {
+
+// fixed the classes assigned to dropdown
+if ($element->is_dropdown && $depth !== 0) {
+    $element->classes[] = 'dropdown-submenu';
+}
+elseif ($element->is_dropdown) { 
+    $element->classes[] = 'dropdown'; 
+}
+/*    if ($element->is_dropdown) {
       $element->classes[] = 'dropdown';
-    }
+    }*/
 
     parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
   }
@@ -83,7 +91,7 @@ function roots_nav_menu_args($args = '') {
   }
 
   if (!$args['depth']) {
-    $roots_nav_menu_args['depth'] = 2;
+    $roots_nav_menu_args['depth'] = 5;
   }
 
   return array_merge($args, $roots_nav_menu_args);
