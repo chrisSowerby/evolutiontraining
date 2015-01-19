@@ -26,6 +26,39 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on all pages
 
+
+    // make multi dropdowns work
+    $(".dropdown-submenu > a").first().attr("dropdown-toggle","dropdown").addClass("dropdown-toggle");
+    $(".dropdown-submenu > a").append('<b class="caret"></b>'); 
+
+    $(".dropdown-submenu > a").first().click(function(){
+      if ($(this).parent().hasClass("open")) {
+        $(this).parent().removeClass("open");
+      } else {
+        $(this).parent().addClass("open");
+      }
+
+      return false;
+    });
+
+    // make footer go to the bottom of page...
+    var windowHeight = $(window).height();
+    var systemHeader = $("#system-header").outerHeight(); // outerHeight gets any padding or borders as well
+    var systemBody = $("#system-body").outerHeight();
+    var systemFooter = $("#system-footer").outerHeight();
+    var overallHeight = systemHeader + systemBody + systemFooter;
+    
+    console.log("systemHeader : "+systemHeader);
+    console.log("systemBody : "+systemBody);
+    console.log("systemFooter : "+systemFooter);
+
+
+      if (overallHeight < windowHeight) {
+          var paddingPush = windowHeight - overallHeight;
+          $("#system-body").css("padding-bottom", paddingPush+"px");
+
+      }
+
     }
   },
   // Home page

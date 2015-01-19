@@ -11,26 +11,26 @@
     do_action('get_header');
     get_template_part('templates/header');
   ?>
-   
+
+    <div id="system-body">
       <?php if (roots_display_sidebar()) { ?>
-        <div class="container paddingFooterPush">
+        <div class="container themeStyle">
             <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-8 main-content">
                   <?php  include roots_template_path();?>
               </div>
 
               <div class="col-md-4">
-                  <?php  include roots_sidebar_path();?>
+                  <div class="sidebarStyles">
+                      <?php  include roots_sidebar_path();?>
+                  </div>
               </div>
             </div>
         </div>
       <?php } else { ?>
-
          <?php include roots_template_path();?>
-
       <?php } ?>
-    </div><!-- /.content -->
-  </div><!-- /.wrap -->
+    </div>
 
   <?php get_template_part('templates/footer'); ?>
 

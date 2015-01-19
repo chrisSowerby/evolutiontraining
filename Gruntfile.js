@@ -34,6 +34,8 @@ module.exports = function(grunt) {
           dest: 'httpdocs/wordpress/wp-content/themes/roots',
           exclusions: [
            '**/DS_Store/**',
+           '**/.git/**',
+           '**/.grunt/**',
            'C:/xampp3/htdocs/sites/evolutiontraininguk/wordpress/wp-content/themes/roots/.ftppass',
            '**/node_modules/**'
            ],
