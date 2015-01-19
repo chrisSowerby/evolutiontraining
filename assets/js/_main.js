@@ -36,7 +36,19 @@ var Roots = {
 
 
 
+$('.main-content > h1').first().prependTo("#headingHere");
 
+
+
+$('.vidCover img').click(function() {
+$('.vidCover img, .vidCover').fadeOut(400);
+$("#homeVideo")[0].src += "?rel=0;&autoplay=1";
+$('#player').delay(400).fadeIn(1200);
+});
+
+/*setTimeout(function(){
+$( "#imageID" ).trigger( "click" );
+}, 2500);*/
 
 
 

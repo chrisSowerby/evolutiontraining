@@ -11,17 +11,24 @@
     do_action('get_header');
     get_template_part('templates/header');
   ?>
+   
+      <?php if (roots_display_sidebar()) { ?>
+        <div class="container paddingFooterPush">
+            <div class="row">
+              <div class="col-md-8">
+                  <?php  include roots_template_path();?>
+              </div>
 
-  <div class="wrap" role="document">
-    <div class="content">
-      <main class="main" role="main">
-        <?php include roots_template_path(); ?>
-      </main><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
-        <aside class="sidebar" role="complementary">
-          <?php include roots_sidebar_path(); ?>
-        </aside><!-- /.sidebar -->
-      <?php endif; ?>
+              <div class="col-md-4">
+                  <?php  include roots_sidebar_path();?>
+              </div>
+            </div>
+        </div>
+      <?php } else { ?>
+
+         <?php include roots_template_path();?>
+
+      <?php } ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
 

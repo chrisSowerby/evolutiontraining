@@ -15,7 +15,8 @@ function roots_setup() {
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
     'primary_navigation' => __('Primary Navigation', 'roots'),  
-    'secondary' => __('Secondary Navigation', 'roots')
+    'secondary' => __('First footer navigation', 'roots'),
+    'footer_two' => __('Second footer navigation', 'roots')
   ));
 
   // Add post thumbnails
@@ -66,6 +67,15 @@ function roots_widgets_init() {
     'after_widget' => '</div>',
     'before_title' => '<div class="this-inline"><p class="header-enquiries">',
     'after_title' => '</p></div>'
+  ));
+
+  register_sidebar(array(
+    'name' => 'homepage video',
+    'id' => 'homepage_video',
+    'before_widget' => '',
+    'after_widget' => '',
+    'before_title' => '',
+    'after_title' => ''
   ));
 }
 add_action('widgets_init', 'roots_widgets_init');

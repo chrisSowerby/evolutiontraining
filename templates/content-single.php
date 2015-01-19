@@ -1,4 +1,7 @@
 <?php while (have_posts()) : the_post(); ?>
+
+   
+
   <article <?php post_class(); ?>>
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
@@ -56,18 +59,18 @@ the_post_thumbnail( array(100,100) );  // Other resolutions*/
 <!-- <ul class="featuredWrapper">
 
 <?php
-  $pageID = get_the_id();
+  /*$pageID = get_the_id();
   $params = array(
     'where'=>"display.ID = $pageID",
     'limit'=>1);
-  $features = pods( 'feature', $params );
+  $features = pods( 'feature', $params );*/
 ?>
 
   <li class="featuredBox featured1">
-    <?php while ( $features->fetch() ) : ?>
-      <div class="text"><?php echo $features->display( 'post_title' ); ?></div>
-        <?php echo $features->display( 'post_content' ); ?>
-    <?php endwhile ?>
+    <?php //while ( $features->fetch() ) : ?>
+      <div class="text"><?php //echo $features->display( 'post_title' ); ?></div>
+        <?php //echo $features->display( 'post_content' ); ?>
+    <?php // endwhile ?>
   </li>
 </ul> -->
 
