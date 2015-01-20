@@ -46,7 +46,7 @@ function roots_scripts() {
    */
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', $assets['jquery'], array(), null, true);
+    wp_register_script('jquery', $assets['jquery'], array(), null, false); 
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
 

@@ -1,5 +1,5 @@
 //jquery by helpchrisplz - chris sowerby
-//also loading skin\frontend\rwd\default\js\slider\jquery.mobile.custom.touch.min.js for swipe detection.
+//also loading jquery.mobile.custom.touch.min.js for swipe detection.
 
 window.console = window.console || {log:function(){}}; //stop errors in old ie when testing this script.
 
@@ -16,7 +16,7 @@ $(window).load(function () {
 $slider = $('#imageSlider');
 var usePauseOnHover = true;
 var usePausedTooltip = true;
-var autoSlideChange = 99995000;
+var autoSlideChange = 9000;
 var useTimer = false; // needs work
 var effectDuration = 450; 
 var useHoverFade = true;

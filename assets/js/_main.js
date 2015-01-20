@@ -48,9 +48,9 @@ var Roots = {
     var systemFooter = $("#system-footer").outerHeight();
     var overallHeight = systemHeader + systemBody + systemFooter;
     
-    console.log("systemHeader : "+systemHeader);
+/*    console.log("systemHeader : "+systemHeader);
     console.log("systemBody : "+systemBody);
-    console.log("systemFooter : "+systemFooter);
+    console.log("systemFooter : "+systemFooter);*/
 
 
       if (overallHeight < windowHeight) {
@@ -86,6 +86,17 @@ $( "#imageID" ).trigger( "click" );
 
 
 
+
+    }
+  },
+
+  // conctact page
+  contact: {
+    init: function() {
+
+        $("#contactPageMove").appendTo("#mainContentDestination");
+        $(".wpcf7").appendTo("#formDestination");
+        $("#wpgmza_map").appendTo("#mapDestination");
 
     }
   },

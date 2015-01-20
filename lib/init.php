@@ -77,5 +77,13 @@ function roots_widgets_init() {
     'before_title' => '',
     'after_title' => ''
   ));
+  register_sidebar(array(
+    'name' => 'testimonials',
+    'id' => 'testimonials',
+    'before_widget' => '',
+    'after_widget' => '',
+    'before_title' => '',
+    'after_title' => ''
+  ));
 }
 add_action('widgets_init', 'roots_widgets_init');
